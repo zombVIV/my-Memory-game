@@ -1,7 +1,11 @@
 /*
  * 创建一个包含所有卡片的数组
  */
-
+var cards=[];
+for (var i = 0; i <= $(".card").length; i++){
+    cards.push($(".card")[i]);
+}
+console.log(cards);
 
 /*
  * 显示页面上的卡片
@@ -13,10 +17,12 @@
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
+     //虽然仍有元素洗牌…
     while (currentIndex !== 0) {
+        //选择一个剩余元素…
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
+        //并将其与当前元素进行交换
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
@@ -24,8 +30,21 @@ function shuffle(array) {
 
     return array;
 }
-
-
+ shuffle(cards);// 洗牌
+ $(".card").remove();//移除原来的子元素
+ for(var j = 0; j <= cards.length;j++){
+     //循环遍历每张卡片，创建其 HTML
+     $(".deck").append(cards[j]);
+    
+ }
+var OpenCards=[];
+$(".card").click(function(){
+    $(this).addClass("open show");//添加类open show
+    OpenCards.push(this.innerHTML);//获取元素内容
+    if(OpenCards.length > 1 && OpenCards[0]==OpenCards[1]){
+        $(this).addClass("match");
+    }
+})
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
