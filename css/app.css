@@ -10,19 +10,19 @@ html {
 
 html,
 body {
-    width: 100%;
+    width: 100%;/* 宽 高 外边距 内边距*/
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns 细微图案背景图案*/
+    font-family: 'Coda', cursive;/* 字体属性 */
 }
 
 .container {
-    display: flex;
+    display: flex;/* 框多类型 周围留白 居中对齐 方向为相反的顺序（倒着321）*/
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -34,7 +34,7 @@ h1 {
 }
 
 /*
- * Styles for the deck of cards
+ * Styles for the deck of cards卡片的样式
  */
 
 .deck {
@@ -42,10 +42,10 @@ h1 {
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    border-radius: 10px;/* 边框-圆 */
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);/* 阴影 */
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;/* 拆行 */
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
@@ -58,15 +58,17 @@ h1 {
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
-    cursor: pointer;
+    cursor: pointer;/* 光标 */
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+
+
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY(0);/* 旋转 */
     background: #02b3e4;
     cursor: default;
 }
@@ -82,13 +84,13 @@ h1 {
 }
 
 /*
- * Styles for the Score Panel
+ * Styles for the Score Panel得分面板样式
  */
 
 .score-panel {
-    text-align: left;
+    text-align: left;/* 文本对齐方式 */
     width: 345px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;/* 下外边框 */
 }
 
 .score-panel .stars {
@@ -99,11 +101,11 @@ h1 {
 }
 
 .score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+    list-style: none;/* 列表属性 */
+    display: inline-block;/*框类型*/
 }
 
-.score-panel .restart {
-    float: right;
+.score-panel .restart {/* 初始化按键 */
+    float: right;/* 图像向右侧浮动 */
     cursor: pointer;
 }
