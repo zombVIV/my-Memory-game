@@ -65,9 +65,8 @@ function Initialization(){
     //在页面显示步数0
     $('.moves').html(moves);
     // 显示页面时间为0
-    
-    
     $('.gametime').html(time);
+
     //恢复两颗消失的星星
     $('#star1' ).css('display','inline-block');
     $('#star2' ).css('display','inline-block');
@@ -87,7 +86,7 @@ function Initialization(){
  let matchedCard=[];
 $('.restart').click(function(){
     Initialization();
-    
+    clearInterval(mytime);
 }); //点击初始化
  $(document).ready(function(){
     Initialization();
@@ -96,7 +95,7 @@ $('.restart').click(function(){
         //总点击卡片事件
          let tcard=$(this);
         if(clickcard === 0){
-            clickcard === 1;
+            clickcard = 1;
             timer();
         };// 第一次点卡的时候进行计时（计时器事件）
         console.log(this);
@@ -205,6 +204,7 @@ function gameover(){
          alert("You are success! Star rating: "+stars+",Time: "+time);
          //游戏初始化
          Initialization();
+         clearInterval(mytime);
          
      }
 };
@@ -215,7 +215,7 @@ function timer(){
     if(matchedCard.length === 16){
              return;
     };
-         mytime = setTimeout(function(){
+         mytime = setInterval(function(){
             $('.gametime').html(time);
          time++;
           },500);
