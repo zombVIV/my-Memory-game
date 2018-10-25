@@ -24,12 +24,6 @@ var moves//步数
 var stars//星星
 var clickcard//点卡片
 var firstcard//匹配的第一张
-/*
-$(document).ready(function(){
-    Initialization();
-    Clickcard();
-  });
-*/
 
 /*
  * 显示页面上的卡片
@@ -53,27 +47,42 @@ function shuffle(array) {
     }
 
     return array;
-}
+}//洗牌函数end
 
 
+//初始化函数
 function Initialization(){
+    //点击事件状态为0
     clickcard = 0;
+    //时间为0
     time = 0;
+    //步数为0
     moves = 0;
+    //星星数量为3
     stars = 3;
+    //清空匹配卡片数组
     matchedCard.splice(0,matchedCard.length);
+    //在页面显示步数0
     $('.moves').html(moves);
+    // 显示页面时间为0
+    
+    
+    $('.gametime').html(time);
+    //恢复两颗消失的星星
     $('#star1' ).css('display','inline-block');
-    $('#star2' ).css('display','inline-block');    
+    $('#star2' ).css('display','inline-block');
+    //洗牌    
    let cards2 = shuffle(cards1);
     $('.card').remove();//移除原来的子元素
     for(var j = 0; j <= cards2.length;j++){
           //循环遍历每张卡片，创建其 HTML
-        $(".deck").append(cards2[j]);
-    
+        $(".deck").append(cards2[j]);    
  };
-   
-};//初始化函数
+
+};//初始化函数end
+
+
+
  let openCard=[];
  let matchedCard=[];
 $('.restart').click(function(){
@@ -91,11 +100,11 @@ $('.restart').click(function(){
             timer();
         };// 第一次点卡的时候进行计时（计时器事件）
         console.log(this);
-
+        //延迟函数游戏结束
         setTimeout(function(){
+            //游戏结束函数延迟1000毫秒执行
             gameover();
         },1000);
-
         //下面if开始点击卡片事件
         if(tcard.hasClass("open show")===false){
             //当这张卡没有“open show”时命令有效
@@ -184,28 +193,35 @@ $(document).ready(function() {
     }
   });
 */
+
+
 //  游戏结束函数
 function gameover(){
     //16张全匹配完成后执行
-if(matchedCard.length === 16){
-    //点击卡片状态为0
-    clickcard === 0
-    //弹出对话框
-    alert("You are success! Star rating: "+stars+",Time: "+time);
-    //游戏初始化
-    Initialization();
-
-}
+     if(matchedCard.length === 16){
+         //点击卡片状态为0
+         clickcard === 0
+         //弹出对话框显示星级 时间
+         alert("You are success! Star rating: "+stars+",Time: "+time);
+         //游戏初始化
+         Initialization();
+         
+     }
 };
+
+
 //计时函数setTimeout延迟
 function timer(){
-    $('.gametime').html(time);
+    if(matchedCard.length === 16){
+             return;
+    };
+         mytime = setTimeout(function(){
+            $('.gametime').html(time);
          time++;
-          setTimeout(function(){
-            timer();
-          },4000);
+          },500);
        
 };//计时器1000毫秒运行一次函数end
+
 
 //星星评定函数
 function Starrating1(){
